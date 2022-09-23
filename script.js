@@ -1,21 +1,38 @@
-let animal = {
-  name: "Lion",
-  legs: 4
+const course = {
+  name: "vikas",
+  age: 27
 };
+console.log(course);
+course.height = 5.9;
 
-for (let key in animal) {
-  console.log(key);
+function createCource(title) {
+  return {
+    title: title,
+    name: "vikas"
+  };
 }
+const course1 = createCource("JavaScript");
+console.log(course1);
+console.log(course1.title);
 
-console.log("================================");
-
-let names = ["Vikas", "Anuj", "Kapil", "Ravi"];
-for (let index in names) {
-  console.log(index + " : " + names[index]);
+function Course(title) {
+  this.title = title;
+  this.name = "vikas";
 }
+const person1 = new Course("Python");
+console.log(person1);
 
-console.log("================================")
-
-for (let name of names) {
-  console.log(name);
+function A(b) {
+  this.b = b;
+  this.c = "c";
 }
+const a1 = new A("bb");
+console.log(a1); // {b:'bb',c:'c'}
+
+function B(a) {
+  this.a = a;
+  this.c = "c";
+  return this;
+}
+const b1 = new B("aa");
+console.log(b1);
