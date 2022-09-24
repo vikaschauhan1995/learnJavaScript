@@ -1,95 +1,92 @@
-const arr1 = [1, 2, 3, 4, 5, 6, 7, 8];
-arr1.push(9);
-console.log(arr1);
-
-const arr2 = [1, 2, 3, 4, 5, 6, 7, 8];
-arr2.pop();
-console.log(arr2);
-
-const arr3 = [1, 2, 3, 4, 5, 6, 7, 8];
-arr3.unshift(10);
-console.log(arr3);
-
-const arr4 = [1, 2, 3, 4, 5, 6, 7, 8];
-arr3.shift();
-console.log(arr4);
-
-const arr5 = [1, 2, 3, 4, 5, 6, 7, 8];
-console.log(arr5.indexOf(5));
-
-
-const arr6 = [1, 2, 3, 4, 4, 3, 1, 3, 4, 5, 6, 7];
-console.log(arr6.lastIndexOf(3));
-
-
-const arr7 = [1, 2, 3, 4, 4, 3, 1, 3, 4, 5, 6, 7];
-console.log(arr7.includes(1));
-console.log(arr7.includes(10));
-console.log(arr7.includes(1, 7))
-
-// find
-const arr8 = [1, 2, 3, 4, 4, 3, 1, 3, 4, 5, 6, 7];
-let arr8_ = arr8.find(i => i > 1)
-console.log(arr8_);
-
-const persons = [
-  { name: "vikas", age: 27 },
-  { name: "anuj", age: 28 },
-  { name: "hulkhoggen", age: 38 }
+const characters = [
+  {
+    name: 'Vikas',
+    heigth: 177,
+    mass: 77,
+    eye_color: 'black',
+    gender: 'male'
+  }, {
+    name: 'Anuj',
+    heigth: 177,
+    mass: 99,
+    eye_color: 'black',
+    gender: 'male'
+  }, {
+    name: 'Tarak Mehta',
+    heigth: 172,
+    mass: 77,
+    eye_color: 'brown',
+    gender: 'male'
+  },
+  {
+    name: 'Jethalala',
+    heigth: 145,
+    mass: 136,
+    eye_color: 'black',
+    gender: 'male'
+  },
+  {
+    name: 'ABabita Ji',
+    heigth: 150,
+    mass: 49,
+    eye_color: 'grey',
+    gender: 'female'
+  },
+  {
+    name: 'Krishnan Iyer',
+    heigth: 168,
+    mass: 322,
+    eye_color: 'black',
+    gender: 'male'
+  }
 ];
-let persons_ = persons.find(i => {
-  return i.age > 28;
+const namesArray = characters.map(c => c.name);
+console.log(namesArray);
+
+const nameHeightArray = characters.map(c => {
+  return {
+    name: c.name,
+    height: c.height
+  }
 });
-console.log(persons_)
+console.log(nameHeightArray);
 
-const arr9 = [1, 2, 3, 4];
-const arr10 = [5, 6, 7, 8];
-const concatinated = arr9.concat(arr10);
+const getTotalHeight = characters.reduce((a, b) => { return a + b.heigth }, 0);
 
-console.log(concatinated);
+console.log(getTotalHeight);
 
-console.log(concatinated.slice(2));
-console.log(concatinated.slice(2, 6));
+// find character with mass greater than 100
 
-const combineArrays = [...arr9, ...arr10];
-console.log(combineArrays);
-console.log([...arr9, "vikas"]);
+const getLargeMass = characters.filter(c => c.mass > 100);
+console.log(getLargeMass);
 
+const getAllMales = characters.filter(c => c.gender === 'male');
+console.log(getAllMales);
 
-// for of
-const names = ["vikas", "anuj", "mukesh", "ranveer"];
-for (let n of names) {
-  console.log(n);
-}
-
-// forEach
-names.forEach((n, index) => {
-  console.log(index + " : " + n + "\n");
+const sortByName = characters.sort((a, b) => {
+  if (a.name > b.name) {
+    return 1;
+  } else if (a.name < b.name) {
+    return -1;
+  } else {
+    return 0;
+  }
 })
 
-const student = ["V", "i", "k", "a", "s"];
-console.log(student.join(""));
+console.log(sortByName);
 
+const allHaveGreaterMass = characters.every(c => c.mass > 40);
+console.log(allHaveGreaterMass);
 
-const student1 = "V_i_k_a_s";
-console.log(student1.split("_"));
+const allHaveBlueEyes = characters.every(c => c.eye_color === 'black');
+console.log(allHaveBlueEyes);
 
+// have atleast one female
+const haveOneFemale = characters.some(c => c.gender === 'female');
+console.log(haveOneFemale);
 
-const cities = [
-  { name: "Delhi", population: 40 },
-  { name: "Mumbai", population: 50 },
-  { name: "UP", population: 33 },
-  { name: "MP", population: 55 },
-  { name: "Karnataka", population: 90 }
-];
-const filteredArray = cities.filter((c, i) => {
-  return c.population > 50
+// atleast one character taller than 100
+const haveOneTaller = characters.some(c => {
+  return c.heigth >= 100
 });
-console.log(filteredArray);
-
-const makeDoublePopulation = cities.map(c => {
-  const x = c;
-  x["population"] = c.population * 2
-  return x;
-});
-console.log(makeDoublePopulation);
+console.log(haveOneTaller); 
