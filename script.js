@@ -1,74 +1,29 @@
-
-
-
-var name = "Vikas";
-
-var x = 22;
-
-// Global scope
-function parent() {
-  var x = 1;
-  console.log(x);
-  function childOfFirst() {
-    var x = 2;
-    console.log(x);
-  }
-  childOfFirst();
-}
-parent();
-
-function second() {
-  console.log(x);
-}
-second();
-
-
-
-// block scope
-var i = 10;
-{
-  var i = 1;
-  console.log(i);
-}
 console.log(i);
+var i = 10;
 
-
-let j = 10;
-{
-  let j = 1;
-  console.log(j);
+sayHello();
+function sayHello() {
+  console.log("Hello");
 }
-console.log(j);
 
 
+// console.log(g);// Uncaught referenceError:
+let g = 10;
 
 
+// helloAgain(); // helloAgain ins not a function
+var helloAgain = function () {
+  console.log("Hello Again");
+}
+
+
+// begind the scene it looks like 
+// var helloAgain = undefined;
+// helloAgain();
+
+let foo = "bar";
 if (true) {
-  let a = "a";
-  var b = "b";
-  const c = "c";
+  let foo = "baz";
+  console.log(foo);
 }
-// console.log(a); // undefined
-console.log(b);
-// console.log(c); // undefined
-
-
-
-// Lexical Scope
-function Dada() {
-  var name = "Dada Kumar";
-  // like is not accessible here
-  function Papa() {
-    // name is accessible here
-    // like is not accessible here
-    console.log("Papa kumar son of " + name);
-    function Beta() {
-      // name is also accessible here
-      console.log("Beta kumar grandchild of " + name);
-      var like = 'Coding';
-    }
-    Beta();
-  }
-  Papa()
-}
-Dada();
+console.log(foo);
