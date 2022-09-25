@@ -1,29 +1,81 @@
-console.log(i);
-var i = 10;
-
-sayHello();
-function sayHello() {
-  console.log("Hello");
+var noOfApples = 0;
+function increaseApple() {
+  this.noOfApples++;
+  console.log(this);
 }
+increaseApple();
+increaseApple();
+console.log(noOfApples);
 
 
-// console.log(g);// Uncaught referenceError:
-let g = 10;
-
-
-// helloAgain(); // helloAgain ins not a function
-var helloAgain = function () {
-  console.log("Hello Again");
+let counter = {
+  count: 0,
+  increment: function () {
+    counter.count++;
+  }
 }
+counter.increment();
+counter.increment();
+console.log(counter.count);
 
-
-// begind the scene it looks like 
-// var helloAgain = undefined;
-// helloAgain();
-
-let foo = "bar";
-if (true) {
-  let foo = "baz";
-  console.log(foo);
+let counter_ = createCounter();
+let counter1 = createCounter();
+function createCounter() {
+  return {
+    count: 0,
+    increment: function () {
+      counter_.count++;
+    }
+  }
 }
-console.log(foo);
+counter1.increment();
+counter1.increment();
+console.log(counter1.count);
+
+
+
+let counter2 = createCounterNew();
+function createCounterNew() {
+  return {
+    count: 0,
+    increment: function () {
+      this.count++;
+    }
+  }
+}
+counter2.increment();
+counter2.increment();
+counter2.increment();
+console.log(counter2.count);
+
+var noOfApples = 0;
+function increaseApple() {
+  this.noOfApples++;
+  console.log(this);
+}
+increaseApple();
+increaseApple();
+console.log(noOfApples);
+
+
+function Car(name) {
+  this.name = name;
+  this.start = function () {
+    console.log(this.name + ' started');
+    console.log(this);
+  }
+}
+let swift = new Car('Swift');
+console.log(swift);
+swift.start();
+// let i20 = new Car('i20');
+// i20.start();
+
+function Person(name) {
+  this.name = name;
+  this.sayHi = function () {
+    console.log('Hello, ' + this.name);
+  }
+}
+let vikas = Person('vikas');
+console.log(name);
