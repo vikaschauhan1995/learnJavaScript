@@ -1,81 +1,62 @@
-var noOfApples = 0;
-function increaseApple() {
-  this.noOfApples++;
-  console.log(this);
-}
-increaseApple();
-increaseApple();
-console.log(noOfApples);
+let square = {
+  side: 5,
+  get area() {
+    return this.side * this.side;
+  }
+};
+console.log(square.area);
 
 
-let counter = {
-  count: 0,
-  increment: function () {
-    counter.count++;
+class Square {
+  constructor(side) {
+    this.side = side;
+  }
+  get area() {
+    return this.side * this.side;
   }
 }
-counter.increment();
-counter.increment();
-console.log(counter.count);
+const square5 = new Square(5);
+console.log(square5.area);
 
-let counter_ = createCounter();
-let counter1 = createCounter();
-function createCounter() {
-  return {
-    count: 0,
-    increment: function () {
-      counter_.count++;
+const person = ["vikas", "anuj", "yogesh"];
+const personJoined = person.join("-");
+console.log(personJoined);
+
+
+console.log(stringConcat("-", "vikas", "anuj", "yogesh"));
+
+function stringConcat(seperator, ...args) {
+  let x = '';
+  const a = args.forEach((s, i) => {
+    x += s
+    if (args.length - 1 > i) {
+      x += seperator
     }
+  });
+  return x;
+}
+
+
+const arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+const [a, b, c, ...other] = arr;
+console.log(a);
+console.log(b);
+console.log(c);
+console.log(other);
+
+function findMatchSticks(x) {
+  if (x <= 0) {
+    return 0;
   }
+  return (x * 5) + 1;
 }
-counter1.increment();
-counter1.increment();
-console.log(counter1.count);
 
+console.log(findMatchSticks(0));
+console.log(findMatchSticks(1));
+console.log(findMatchSticks(2));
+console.log(findMatchSticks(3));
+console.log(findMatchSticks(4));
+console.log(findMatchSticks(5));
+console.log(findMatchSticks(87));
 
-
-let counter2 = createCounterNew();
-function createCounterNew() {
-  return {
-    count: 0,
-    increment: function () {
-      this.count++;
-    }
-  }
-}
-counter2.increment();
-counter2.increment();
-counter2.increment();
-console.log(counter2.count);
-
-var noOfApples = 0;
-function increaseApple() {
-  this.noOfApples++;
-  console.log(this);
-}
-increaseApple();
-increaseApple();
-console.log(noOfApples);
-
-
-function Car(name) {
-  this.name = name;
-  this.start = function () {
-    console.log(this.name + ' started');
-    console.log(this);
-  }
-}
-let swift = new Car('Swift');
-console.log(swift);
-swift.start();
-// let i20 = new Car('i20');
-// i20.start();
-
-function Person(name) {
-  this.name = name;
-  this.sayHi = function () {
-    console.log('Hello, ' + this.name);
-  }
-}
-let vikas = Person('vikas');
-console.log(name);
+// 6, 11, 16
